@@ -3,9 +3,11 @@ from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common import env_checker
 from game_env import WebGame
 
-env = WebGame()
-# check env
-env_checker.check_env(env)
+ok = False
+if ok:
+    env = WebGame()
+    # check env
+    env_checker.check_env(env)
 
 class TrainAndLoggingCallback(BaseCallback):
     def __init__(self, check_freq, save_path, verbose=1):
@@ -17,8 +19,9 @@ class TrainAndLoggingCallback(BaseCallback):
         if self.save_path is not None:
             os.makedirs(self.save_path, exist_ok=True)
 
-        def _on_step(self):
-            if self.n_calls % self.check_freq == 0:
-                model_path = os.path.join(self.save_path, 'best_model_{}'.format(self.n_calls))
-                self.model.save(model_path)
-            return True
+    def _on_step(self):
+        if self.n_calls % self.check_freq == 0:
+            model_path = os.path.join(self.save_path, 'best_model_{}'.format(self.n_calls))
+            self.model.save(model_path)
+
+        return True
