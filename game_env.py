@@ -4,8 +4,8 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 import time
-from gym import Env
-from gym.spaces import Box, Discrete
+from gymnasium import Env
+from gymnasium.spaces import Box, Discrete
 from mss import mss
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
@@ -41,7 +41,7 @@ class WebGame(Env):
         # info dictionary
         info = {}
 
-        return new_observation, reward, done, info
+        return new_observation, reward, done, done, info
 
     # visualize the game
     def render(self):
@@ -50,11 +50,12 @@ class WebGame(Env):
             self.close()
 
     # restart the game
-    def reset(self):
+    def reset(self, seed=0):
         time.sleep(1)
         pydirectinput.click(x=150, y=150)
         pydirectinput.press('space')
-        return self.get_observation()
+        info = {}
+        return self.get_observation(), info
 
 
     # get the part of the observation of the game that we need
@@ -88,8 +89,3 @@ class WebGame(Env):
     def close(self):
         cv2.destroyAllWindows()
 
-
-env = WebGame()
-print(env.action_space.sample())
-print(plt.imshow(env.observation_space.sample()[0]))
-print(env.get_observation().shape)
