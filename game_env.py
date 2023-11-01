@@ -7,7 +7,7 @@ import time
 from gym import Env
 from gym.spaces import Box, Discrete
 from mss import mss
-
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # creating a custom environment
 class WebGame(Env):
@@ -19,7 +19,7 @@ class WebGame(Env):
         # define extraction parameters for the game
         self.cap = mss()
         self.game_location = {'top': 300, 'left': 0, 'width': 600, 'height': 500}
-        self.done_location = {'top': 405, 'left': 630, 'width': 660, 'height': 70}
+        self.done_location = {'top': 380, 'left': 630, 'width': 660, 'height': 70}
 
     # what is get called to do something ,in the game
     def step(self, action):
@@ -30,7 +30,7 @@ class WebGame(Env):
             2: 'no_op'
         }
         if action != 2:
-            pydirectinput.press(action[action_space[action]])
+            pydirectinput.press(action_space[action])
 
         # checking whether the game is done
         done, done_cap = self.get_done()
