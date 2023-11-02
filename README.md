@@ -1,6 +1,5 @@
 # Reinforcement Learning for Chrome Dino Game
 
-![Dino Game](https://imgur.com/gallery/L4J11sv) *(Image Source: [Imgur](https://imgur.com/gallery/L4J11sv))*
 
 Welcome to the Reinforcement Learning project for the Chrome Dino Game! In this project, we have developed a custom environment for training reinforcement learning agents to play the Chrome Dino Game, popularly known as the "T-Rex Runner" game.
 
@@ -55,7 +54,7 @@ To get started with this project, follow these steps:
 This project is made possible by the contributions of the open-source community and the following libraries:
 
 - [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3)
-- [pyDirectInput](https://github.com/SerpentAI/pydirectinput)
+- [pyDirectInput](https://pypi.org/project/PyDirectInput/)
 - [mss](https://github.com/BoboTiG/python-mss)
 - [pytesseract](https://github.com/madmaze/pytesseract)
 
